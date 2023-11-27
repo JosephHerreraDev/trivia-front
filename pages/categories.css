@@ -3,5 +3,9 @@ body {
 }
 
 .categories {
-    margin: 50%;
+    margin: 50px;
+}
+
+.category-group {
+    display: flex;
 }

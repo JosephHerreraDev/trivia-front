@@ -1,0 +1,16 @@
+.category-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: auto;
+    width: 200px;
+    background-color: #BC99FA;
+    border-radius: 10px;
+    color: #000000;
+    margin: 30px;
+}
+
+.category-card:hover {
+    cursor: pointer;
+}
