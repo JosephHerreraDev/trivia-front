@@ -1,0 +1,29 @@
+.question {
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.answer {
+    border: #D3D9FD solid;
+    border-radius: 7px;
+    padding: 7px;
+    margin-bottom: 10px;
+}
+
+.answer-name {
+    display: flex;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.correct {
+    background-color: #033F05;
+}
+
+.incorrect {
+    background-color: #3F0303;
+}
+
+input[type="radio"] {
+    display: none;
+}

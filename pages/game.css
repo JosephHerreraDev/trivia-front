@@ -1,0 +1,26 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 7%;
+}
+
+.timer {
+    margin: 20px auto;
+}
+
+.question-section {
+    border: #D61BF3 solid;
+    background-color: #37033F;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.question-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
