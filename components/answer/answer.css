@@ -10,6 +10,10 @@
     margin-bottom: 10px;
 }
 
+.answer:hover {
+    background-color: #d61bf3;
+}
+
 .answer-name {
     display: flex;
     object-fit: contain;
