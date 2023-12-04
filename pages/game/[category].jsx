@@ -73,33 +73,43 @@ const game = () => {
 
   return (
     <div className="content">
-      <h1 className="category">{category}</h1>
-      <p className="timer">{timer < 10 ? `0${timer}` : timer}</p>
-      <div className="question-section">
-        <div className="question-title">
-          <h2>Pregunta {currentQuestionIndex + 1}</h2>
-        </div>
+      <div className="questions">
+        <h1 className="category">{category}</h1>
+        <p className="timer">{timer < 10 ? `0${timer}` : timer}</p>
+        <div className="question-section">
+          <div className="question-title">
+            <h2>Pregunta {currentQuestionIndex + 1}</h2>
+          </div>
 
-        <div className="answers">
-          {questions &&
-            questions.rows &&
-            questions.rows.length > 0 &&
-            Object.entries(groupedQuestions).map(
-              ([pregunta, respuestas], index) => {
-                if (index === currentQuestionIndex) {
-                  return (
-                    <Answers
-                      key={index}
-                      question={pregunta}
-                      answersList={respuestas}
-                    />
-                  );
-                } else {
-                  return null;
+          <div className="answers">
+            {questions &&
+              questions.rows &&
+              questions.rows.length > 0 &&
+              Object.entries(groupedQuestions).map(
+                ([pregunta, respuestas], index) => {
+                  if (index === currentQuestionIndex) {
+                    return (
+                      <Answers
+                        key={index}
+                        question={pregunta}
+                        answersList={respuestas}
+                      />
+                    );
+                  } else {
+                    return null;
+                  }
                 }
-              }
-            )}
+              )}
+          </div>
         </div>
+      </div>
+      <div className="chat">
+        <embed
+          src="http://localhost:2999/"
+          type=""
+          height={"800px"}
+          width={"700px"}
+        />
       </div>
     </div>
   );
