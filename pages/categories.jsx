@@ -7,7 +7,7 @@ export default function Categories() {
     <div className="categories">
       <h1>Categorias</h1>
       <div className="category-group">
-        <CategoryCard src="/images/science.svg" name="Ciencias" />
+        <CategoryCard src="/images/science.svg" name="Ciencia" />
         <CategoryCard src="/images/tech.svg" name="Tecnologia" />
       </div>
     </div>

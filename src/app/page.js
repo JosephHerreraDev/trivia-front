@@ -4,7 +4,6 @@ import Image from "next/image";
 import "./login.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 
 export default function Home() {
   const router = useRouter();
@@ -12,15 +11,6 @@ export default function Home() {
   const handleSubmit = (e) => {
     router.push("/categories");
   };
-
-  axios
-    .get("http://localhost:3000/categories")
-    .then((response) => {
-      console.log("Data:", response.data);
-    })
-    .catch((error) => {
-      console.error("There was an error!", error);
-    });
 
   return (
     <article className="login">
