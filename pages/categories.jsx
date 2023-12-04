@@ -10,6 +10,9 @@ export default function Categories() {
         <CategoryCard src="/images/science.svg" name="Ciencia" />
         <CategoryCard src="/images/tech.svg" name="Tecnologia" />
       </div>
+      <a target="_blank" href="http://localhost:2999" rel="noopener noreferrer">
+        Entra al chat
+      </a>
     </div>
   );
 }
