@@ -7,10 +7,12 @@ import Answers from "../../components/answer/answer";
 import Styles from "./game.css";
 import getQuestions from "../../api/questions";
 const axios = require("axios");
+import { io } from "socket.io-client";
 
 const game = () => {
   const router = useRouter();
   const { category } = router.query;
+  const [score, setScore] = useState(0);
 
   const [questions, setQuestions] = useState(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -71,9 +73,20 @@ const game = () => {
     return () => clearInterval(countdown); // Cleanup on unmount
   }, [timer]);
 
+  useEffect(() => {
+    const socket = io("http://localhost:4000");
+    socket.on("connect", () => {
+      if (currentQuestionIndex >= 4) {
+        socket.emit("score", score);
+        router.push("/scoreboard");
+      }
+    });
+  }, [score, currentQuestionIndex]);
+
   return (
     <div className="content">
       <div className="questions">
+        <p>score: {score}</p>
         <h1 className="category">{category}</h1>
         <p className="timer">{timer < 10 ? `0${timer}` : timer}</p>
         <div className="question-section">
@@ -93,6 +106,7 @@ const game = () => {
                         key={index}
                         question={pregunta}
                         answersList={respuestas}
+                        setScore={setScore}
                       />
                     );
                   } else {

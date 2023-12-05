@@ -1,10 +1,12 @@
 import React from "react";
+import "/src/app/globals.css";
+import {io} from "socket.io-client";
 
-const Scoreboard = ({ score }) => {
+const Scoreboard = () => {
   return (
     <div className="scoreboard">
       <h2>Scoreboard</h2>
-      <p>{score}</p>
+      
     </div>
   );
 };

@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./answer.css";
 import { useRouter } from "next/router";
 
-const Answers = ({ question, answersList }) => {
+
+const Answers = ({ question, answersList, setScore }) => {
   const [content, setContent] = useState(answersList);
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [correctAnswer, setCorrectAnswer] = useState(answersList[0]);
   const [timer, setTimer] = useState(10);
-  const [score, setScore] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
   const router = useRouter();
 
@@ -44,10 +44,6 @@ const Answers = ({ question, answersList }) => {
     return () => clearInterval(countdown);
   }, []);
 
-  useEffect(() => {
-    console.log(score);
-  }, [score]);
-
   const handleAnswerChange = (e) => {
     setSelectedAnswer(e.target.value);
   };
@@ -60,7 +56,6 @@ const Answers = ({ question, answersList }) => {
 
   return (
     <div>
-      <p className="score">Score: {score}</p>
       {questionIndex < answersList.length ? (
         <>
           <p className="question">{question}</p>
