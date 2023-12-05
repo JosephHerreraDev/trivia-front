@@ -59,6 +59,9 @@ const game = () => {
     if (currentQuestionIndex < Object.keys(groupedQuestions).length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
     }
+    else{
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+    }
     setTimer(10);
   };
   useEffect(() => {
@@ -74,14 +77,14 @@ const game = () => {
   }, [timer]);
 
   useEffect(() => {
-    const socket = io("http://localhost:4000");
-    socket.on("connect", () => {
-      if (currentQuestionIndex >= 4) {
+    if (currentQuestionIndex + 1 == 6) {
+      const socket = io("http://localhost:4000");
+      socket.on("connect", () => {
         socket.emit("score", score);
-        router.push("/scoreboard");
-      }
-    });
-  }, [score, currentQuestionIndex]);
+      });
+      router.push("/scoreboard");
+    }
+  }, [score, currentQuestionIndex, questions]);
 
   return (
     <div className="content">
