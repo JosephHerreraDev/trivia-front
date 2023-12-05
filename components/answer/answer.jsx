@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./answer.css";
+import { useRouter } from "next/router";
 
 const Answers = ({ question, answersList }) => {
   const [content, setContent] = useState(answersList);
@@ -8,6 +10,7 @@ const Answers = ({ question, answersList }) => {
   const [timer, setTimer] = useState(10);
   const [score, setScore] = useState(0);
   const [questionIndex, setQuestionIndex] = useState(0);
+  const router = useRouter();
 
   const checkAnswer = () => {
     if (selectedAnswer === correctAnswer) {
@@ -49,8 +52,15 @@ const Answers = ({ question, answersList }) => {
     setSelectedAnswer(e.target.value);
   };
 
+  useEffect(() => {
+    if (questionIndex - 1 >= answersList.length) {
+      router.push("/scoreboard", { score });
+    }
+  }, [questionIndex]);
+
   return (
     <div>
+      <p className="score">Score: {score}</p>
       {questionIndex < answersList.length ? (
         <>
           <p className="question">{question}</p>
@@ -70,9 +80,7 @@ const Answers = ({ question, answersList }) => {
             </div>
           ))}
         </>
-      ) : (
-        <p>Total score: {score}</p>
-      )}
+      ) : null}
     </div>
   );
 };
